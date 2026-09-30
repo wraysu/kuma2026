@@ -1,0 +1,519 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="Kuma River 2020 tabletop exercise — student field handbook.">
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Kuma River 2020 Handbook</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+/* Layout: one scrolling handbook, sticky section nav, each tool section ending in a task box. */
+:root{
+  --bg:#FAFBFB; --surface:#FFFFFF; --sunk:#F1F5F6;
+  --fg:#18212A; --muted:#5B6773; --faint:#8D99A4;
+  --line:#DDE5E8; --accent:#0E7C90; --accent-soft:#E6F3F6;
+  --warn:#B0392C; --ok:#2B7A48; --amber:#9A6B08;
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --sans:"IBM Plex Sans","Noto Sans JP","Hiragino Sans","Noto Sans TC",system-ui,sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0F141A; --surface:#161E25; --sunk:#1B242C;
+    --fg:#E9EFF2; --muted:#9AA7B2; --faint:#78858F;
+    --line:#26313A; --accent:#59BACD; --accent-soft:#13303A;
+    --warn:#EC8377; --ok:#71C48F; --amber:#D9A441;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0F141A; --surface:#161E25; --sunk:#1B242C;
+  --fg:#E9EFF2; --muted:#9AA7B2; --faint:#78858F;
+  --line:#26313A; --accent:#59BACD; --accent-soft:#13303A;
+  --warn:#EC8377; --ok:#71C48F; --amber:#D9A441;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--bg); color:var(--fg); font-family:var(--sans); font-size:16px;
+  line-height:1.55; margin:0; -webkit-text-size-adjust:100%}
+.wrap{max-width:720px; margin:0 auto; padding-inline:16px; padding-block:0 40px}
+
+header.hero{padding-block:22px 14px}
+h1{font-size:25px; font-weight:600; margin:0 0 4px; letter-spacing:-.01em; text-wrap:balance}
+.dek{font-size:14px; color:var(--muted); margin:0}
+nav.jump{position:sticky; top:env(safe-area-inset-top,0px); z-index:20; background:var(--bg);
+  border-block:1px solid var(--line); margin-inline:-16px; padding:8px 16px;
+  display:flex; gap:6px; overflow-x:auto; -webkit-overflow-scrolling:touch}
+nav.jump a{flex:0 0 auto; font-family:var(--mono); font-size:12px; letter-spacing:.04em;
+  text-decoration:none; color:var(--muted); border:1px solid var(--line); border-radius:999px;
+  padding:5px 11px; background:var(--surface); white-space:nowrap}
+nav.jump a:hover,nav.jump a:focus-visible{color:var(--accent); border-color:var(--accent)}
+
+section{padding-block:26px 6px; scroll-margin-top:60px}
+h2{font-size:20px; font-weight:600; margin:0 0 4px; letter-spacing:-.01em; text-wrap:balance}
+h2 .num{font-family:var(--mono); font-size:14px; color:var(--accent); margin-right:8px}
+h3{font-size:15px; font-weight:600; margin:18px 0 6px; color:var(--accent)}
+p{margin:0 0 10px}
+.lede{color:var(--muted); font-size:14.5px; margin-bottom:14px}
+
+.links{display:grid; gap:8px; margin:14px 0 4px}
+a.site{display:block; text-decoration:none; border:1px solid var(--line); border-radius:10px;
+  background:var(--surface); padding:11px 13px; color:var(--fg)}
+a.site:hover,a.site:focus-visible{border-color:var(--accent)}
+a.site .nm{font-weight:600; font-size:15px; display:block}
+a.site .u{font-family:var(--mono); font-size:11.5px; color:var(--accent); word-break:break-all}
+a.site .wh{font-size:13px; color:var(--muted); display:block; margin-top:3px}
+.pending{border-style:dashed; color:var(--muted)}
+
+ol.steps{margin:0; padding-left:0; list-style:none; counter-reset:st}
+ol.steps li{counter-increment:st; display:grid; grid-template-columns:22px 1fr; gap:0 9px;
+  margin-bottom:9px; font-size:14.5px}
+ol.steps li::before{content:counter(st); font-family:var(--mono); font-size:12px; color:var(--accent);
+  font-weight:600; padding-top:3px}
+b.ui{font-weight:600; color:var(--accent)}
+
+.task{border:1px solid var(--accent); border-radius:10px; background:var(--accent-soft);
+  padding:13px 15px; margin:14px 0 6px}
+.task h4{margin:0 0 8px; font-size:14px; font-weight:600; font-family:var(--mono);
+  letter-spacing:.04em; color:var(--accent)}
+.task ol{margin:0; padding-left:18px; font-size:14.5px}
+.task li{margin-bottom:7px}
+.task .tail{font-size:13px; color:var(--muted); margin:8px 0 0}
+
+.callout{border-left:3px solid var(--warn); padding:2px 0 2px 12px; margin:12px 0;
+  font-size:14px; color:var(--warn); font-weight:500}
+.note{font-size:13.5px; color:var(--muted)}
+
+.roles{display:grid; gap:8px; grid-template-columns:repeat(2,minmax(0,1fr)); margin:12px 0}
+button.role{appearance:none; text-align:left; border:1px solid var(--line); border-radius:10px;
+  background:var(--surface); color:var(--fg); font-family:var(--sans); padding:10px 12px;
+  cursor:pointer; min-width:0}
+button.role .g{font-family:var(--mono); font-size:11px; color:var(--faint); display:block}
+button.role .n{font-weight:600; font-size:14px; display:block; line-height:1.3}
+button.role[aria-pressed="true"]{border-color:var(--accent); background:var(--accent-soft)}
+button.role:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
+@media (max-width:380px){.roles{grid-template-columns:1fr}}
+
+.chain{font-family:var(--mono); font-size:12.5px; color:var(--muted); line-height:1.8;
+  background:var(--sunk); border-radius:8px; padding:10px 12px; overflow-x:auto}
+
+.inject{border:1px solid var(--line); border-radius:12px; background:var(--surface);
+  padding:15px 16px; margin-bottom:12px}
+.inject .hd{display:flex; align-items:baseline; gap:10px; flex-wrap:wrap}
+.inject .ttl{font-size:17px; font-weight:600}
+.inject .clk{font-family:var(--mono); font-size:12.5px; color:var(--warn)}
+.inject .tm{font-family:var(--mono); font-size:11.5px; color:var(--faint); display:block;
+  margin-top:3px}
+.lock{display:flex; gap:8px; margin-top:12px; align-items:center; flex-wrap:wrap}
+.lock input{flex:1 1 150px; min-width:0; font-family:var(--mono); font-size:15px; padding:9px 11px;
+  border:1px solid var(--line); border-radius:8px; background:var(--bg); color:var(--fg);
+  letter-spacing:.12em; text-transform:uppercase}
+.lock button{appearance:none; border:none; border-radius:8px; background:var(--accent); color:#fff;
+  font-family:var(--sans); font-weight:600; font-size:14px; padding:10px 18px; cursor:pointer}
+.lock button:focus-visible,.lock input:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
+.lockmsg{font-size:13px; color:var(--faint); margin-top:8px}
+.lockmsg.bad{color:var(--warn)}
+.body ul{margin:0 0 10px; padding-left:19px; font-size:14.5px}
+.body li{margin-bottom:6px}
+.rolecard{border:1px solid var(--line); border-radius:9px; padding:11px 12px; margin-bottom:9px;
+  background:var(--bg)}
+.rolecard.mine{border-color:var(--accent); background:var(--accent-soft)}
+.rolecard .rh{font-size:14.5px; font-weight:600; margin-bottom:4px}
+.rolecard .rh .tag{font-family:var(--mono); font-size:11px; color:var(--faint); margin-right:6px}
+.rolecard .rh .you{font-family:var(--mono); font-size:10.5px; color:#fff; background:var(--accent);
+  border-radius:4px; padding:1px 6px; margin-left:6px; letter-spacing:.06em}
+.rolecard p{font-size:14px; margin:0 0 6px}
+.rolecard .hand{font-size:13px; color:var(--ok); margin:0}
+
+table{width:100%; border-collapse:collapse; font-size:13.5px}
+.tblwrap{overflow-x:auto; margin:10px 0}
+th,td{text-align:left; padding:7px 9px; border-bottom:1px solid var(--line); vertical-align:top}
+th{font-size:12px; font-family:var(--mono); letter-spacing:.04em; color:var(--faint); font-weight:600}
+td.k{font-weight:600; white-space:nowrap}
+td .ja{font-size:14px}
+
+footer{border-top:1px solid var(--line); margin-top:30px; padding-top:14px;
+  font-size:12px; color:var(--faint); line-height:1.6}
+</style>
+
+</head>
+<body>
+<div class="wrap">
+  <header class="hero">
+    <h1>Kuma River 2020 — Field Handbook</h1>
+    <p class="dek">Hitoyoshi City and Kuma Village · University of Tsukuba · 2–3 October 2026<br>
+      Everything here runs in a browser. No account, nothing to install, and these links stay
+      yours after the workshop.</p>
+  </header>
+
+  <nav class="jump">
+    <a href="#links">Links</a>
+    <a href="#role">My role</a>
+    <a href="#hazard">Hazard map</a>
+    <a href="#gsi">GSI Maps</a>
+    <a href="#sat">Tonight</a>
+    <a href="#umap">uMap</a>
+    <a href="#injects">Injects</a>
+    <a href="#ref">Reference</a>
+  </nav>
+
+  <section id="links">
+    <h2><span class="num">00</span>The five websites</h2>
+    <p class="lede">Sites 1 and 2 are in Japanese. You need about eight words of it — they are at
+      the bottom of this page. If a button is not where this handbook says it is, look for the same
+      idea nearby and tell us: a handbook that has gone out of date is a finding, not a failure.</p>
+    <div class="links" id="sitelinks"></div>
+  </section>
+
+  <section id="role">
+    <h2><span class="num">01</span>Which role are you?</h2>
+    <p class="lede">Tap yours. Your task will be marked in every inject. Write your role on a
+      sticky note and stick it to the edge of your laptop, so the other table can see who you are.</p>
+    <div class="roles" id="rolepick"></div>
+    <div class="chain">HQ (G1) → Evacuation Information (G2) → Shelters (G2) → Fire &amp; Rescue (G1) → back to HQ</div>
+    <p class="note" style="margin-top:10px">Each role's output is the next role's input. Two of the
+      four hand-offs cross the room. Nobody can finish alone.</p>
+  </section>
+
+  <section id="hazard">
+    <h2><span class="num">02</span>重ねるハザードマップ — the hazard map portal</h2>
+    <p class="lede">Every municipality in Japan publishes its hazard maps here: assumed flood extent
+      and depth, landslide zones, and the sites designated for emergency evacuation. It is the map
+      the people of Hitoyoshi could have looked at on 3 July 2020.</p>
+    <ol class="steps">
+      <li>Open the flood link above. <b class="ui">洪水浸水想定区域</b> — the assumed inundation area — is already on.</li>
+      <li>Type <b class="ui">人吉市</b> or Hitoyoshi into the address box (<b class="ui">住所を入力</b>) and press Enter.</li>
+      <li>Find two places: the city centre, and the <b class="ui">渡</b> (Watari) district downstream, in the narrow part of the valley.</li>
+      <li>Read the colour. It is depth, not probability. The legend (<b class="ui">凡例</b>) gives the bands — darker is deeper.</li>
+      <li>Switch on <b class="ui">指定緊急避難場所</b> — designated emergency evacuation sites.</li>
+      <li>Click a site marker. A panel opens with eight hazard types, each marked valid or not valid <em>for that site</em>.</li>
+    </ol>
+    <p class="callout">A site is designated hazard by hazard. The same building can be a valid refuge
+      from a landslide and not a valid refuge from a flood. Nobody is hiding this — it is printed on
+      the map. It only matters if somebody reads it before the night it counts.</p>
+    <div class="task">
+      <h4>YOUR TASK · 15 MIN</h4>
+      <ol>
+        <li>Hitoyoshi city centre: what depth does the assumed map give?</li>
+        <li>The Watari (渡) district: what depth?</li>
+        <li>Find one designated evacuation site in or near Hitoyoshi that is valid for 崖崩れ
+          (cliff collapse) and <strong>not</strong> valid for 洪水 (flood). Write down its name.</li>
+        <li>Somebody is told to go to that site at 04:00 on 4 July 2020. What happens to them?</li>
+      </ol>
+      <p class="tail">Question 3 is the one to spend time on. Question 4 has no written answer —
+        say it out loud at your table.</p>
+    </div>
+  </section>
+
+  <section id="gsi">
+    <h2><span class="num">03</span>地理院地図 — GSI Maps</h2>
+    <p class="lede">The national mapping agency's map viewer. We use one function of it: putting two
+      maps side by side. What was assumed, next to what happened.</p>
+    <h3>The two layers</h3>
+    <div class="tblwrap"><table>
+      <tr><td class="k">What was assumed</td><td><span class="ja">洪水浸水想定区域（想定最大規模）</span> — the assumed inundation area for the largest flood the planners considered</td></tr>
+      <tr><td class="k">What happened</td><td><span class="ja">浸水推定図</span> — the estimated actual inundation, compiled at 13:00 on 4 July 2020, hours after the water peaked</td></tr>
+    </table></div>
+    <h3>If you want to build the comparison yourself</h3>
+    <ol class="steps">
+      <li>Open maps.gsi.go.jp and find <b class="ui">機能</b> (Functions) in the top bar.</li>
+      <li>Choose <b class="ui">地図の比較</b> (Compare maps), then either <b class="ui">並べて比較</b> — two maps side by side, panning together — or <b class="ui">重ねて比較</b> — one over the other with a slider.</li>
+      <li>Load the assumed layer in one window and the 2020 layer in the other.</li>
+      <li>Click anywhere to read <b class="ui">標高</b> — the ground elevation. In a valley this explains a great deal.</li>
+    </ol>
+    <div class="task">
+      <h4>YOUR TASK · 12 MIN · WITH YOUR TABLE</h4>
+      <ol>
+        <li>Name one place where the assumption was right.</li>
+        <li>Name one place where the water went beyond the assumed area.</li>
+        <li>Find somewhere the assumed map says shallow — under one metre — and the 2020 map says deeper. Where?</li>
+      </ol>
+      <p class="tail">Use the settlement names from the map, not "over there". Two people pointing at
+        different places while agreeing with each other is the classic failure of a coordination meeting.</p>
+    </div>
+  </section>
+
+  <section id="sat">
+    <h2><span class="num">04</span>Tonight — find this flood from orbit</h2>
+    <p class="lede">About 20 minutes, on your own, the evening of 2 October. No account, no code.
+      Bring one screenshot for each question and five minutes of Session 2 is yours.</p>
+    <div class="tblwrap"><table>
+      <tr><td class="k">Sentinel-2</td><td>Optical. It records sunlight reflected off the ground, so it sees roughly what your eye would see — and cloud stops it completely.</td></tr>
+      <tr><td class="k">Sentinel-1</td><td>Radar. It sends its own microwave pulse and measures the echo, so it works at night and through cloud. Calm water reflects the pulse away and returns almost nothing — it reads dark.</td></tr>
+    </table></div>
+    <h3>Getting to the right place and the right week</h3>
+    <ol class="steps">
+      <li>Open either site. Search for <b class="ui">Hitoyoshi</b>, or type the coordinates <b class="ui">32.21, 130.75</b>.</li>
+      <li>Switch the mode to <b class="ui">Find a Scene</b>. A calendar appears — this is how you move through the archive.</li>
+      <li>Set the calendar to July 2020. Each entry is one pass of the satellite over this valley.</li>
+      <li>Open the cloud filter fully before you conclude anything. If it is set to "under 10% cloud" you will be shown an empty July and draw the wrong conclusion for the right reason.</li>
+      <li>Change what you are looking at with the rendering list — <b class="ui">Natural Colour</b>, <b class="ui">Colour Infrared</b>, <b class="ui">Short-wave Infrared</b>, and the indices. On Sentinel-1, look for the water ones.</li>
+      <li>The <b class="ui">Swipe</b> and <b class="ui">Animate</b> modes put two dates against each other. Usually more convincing than one image alone.</li>
+    </ol>
+    <div class="task">
+      <h4>THREE QUESTIONS · ONE SCREENSHOT EACH</h4>
+      <ol>
+        <li>In Sentinel-2, find the first image after 4 July 2020 in which you can actually see this valley — not cloud. What date is it?</li>
+        <li>In Sentinel-1, look at the first week of July 2020. Can you see the water? Try a water index, and note where you put the threshold.</li>
+        <li>Which of the two would have been any use to somebody making a decision at 05:00 on 4 July 2020?</li>
+      </ol>
+      <p class="tail">If the archive does not reach back to 2020 at all, say so — that is a finding
+        too, and it is worth more than a screenshot of the wrong year.</p>
+    </div>
+    <p class="callout">Do not look up what happened at the nursing home. It is one search away and it
+      will spoil Session 2 for your whole table.</p>
+  </section>
+
+  <section id="umap">
+    <h2><span class="num">05</span>uMap — where you draw your decisions</h2>
+    <p class="lede">Session 2. A free, open mapping tool built on OpenStreetMap. No account, nothing
+      to install. One link gets you in, and the map stays yours afterwards.</p>
+    <ol class="steps">
+      <li>Open the map link above in a normal browser. Chrome, Safari, Edge and Firefox all work.</li>
+      <li>Click <b class="ui">Edit</b> at the top right, or press <b class="ui">Ctrl + E</b>.</li>
+      <li>Find your table's layer: <b class="ui">G1 drawings</b> or <b class="ui">G2 drawings</b>.</li>
+    </ol>
+    <p class="callout">One person draws at a time. Everyone else discusses. Two people editing the
+      same map at once is allowed, but it is how features get lost.</p>
+
+    <h3>The five things you will actually do</h3>
+    <div class="tblwrap"><table>
+      <tr><th>Do this</th><th>How</th></tr>
+      <tr><td class="k">Draw an area</td><td><b class="ui">Draw a polygon</b> or <b class="ui">Ctrl + P</b> → click each corner → click the last corner twice to finish</td></tr>
+      <tr><td class="k">Draw a line</td><td><b class="ui">Add a polyline</b> → click along the route → double-click to finish</td></tr>
+      <tr><td class="k">Place a point</td><td><b class="ui">Add marker</b> → click the spot</td></tr>
+      <tr><td class="k">Fill it in</td><td>Every feature needs three things: <b class="ui">Layer</b> (check it says your table), <b class="ui">Name</b>, <b class="ui">Description</b></td></tr>
+      <tr><td class="k">Save</td><td><b class="ui">Save</b>, top right — then say "saved" out loud, so the other table can reload and see it</td></tr>
+    </table></div>
+    <p class="callout">The mistake everyone makes: drawing on the wrong layer. uMap remembers
+      whichever layer you used last, and it is often not yours. Look at the Layer field every single
+      time before you save.</p>
+
+    <h3>Writing a decision — 50 characters</h3>
+    <p>Every shape carries a written decision in its Description field. Three things, in this order:
+      <strong>what you decided · what time · what it costs you.</strong></p>
+    <div class="tblwrap"><table>
+      <tr><th></th><th>Example</th><th>Why</th></tr>
+      <tr><td class="k" style="color:var(--ok)">Good</td><td>L4 Watari 0455. 2 buses to Senjuen. Accept vertical.</td><td>A decision, a time, and what was given up.</td></tr>
+      <tr><td class="k" style="color:var(--ok)">Good</td><td>Hold brigade. Cannot reach Watari. Asked pref 0715.</td><td>States the limit and the request. Someone else can act on it.</td></tr>
+      <tr><td class="k" style="color:var(--warn)">Bad</td><td>We discussed the situation and decided to monitor it.</td><td>No time, no action, no cost.</td></tr>
+      <tr><td class="k" style="color:var(--warn)">Bad</td><td>Evacuate everyone immediately</td><td>Which district? With what? Nothing is decided yet.</td></tr>
+    </table></div>
+    <p class="note">Fifty characters is long enough for a decision and too short for an excuse.
+      "Wait and see" is allowed — but write it as a decision: <em>"Standby only 2300. Recall staff
+      0200 if rain holds."</em></p>
+
+    <h3>Naming</h3>
+    <p class="note">Start every name with your role, then say what it is:
+      <b class="ui">HQ-</b> · <b class="ui">EVAC-</b> · <b class="ui">SHEL-</b> · <b class="ui">FIRE-</b>.
+      Example: <em>EVAC-L4 Watari 0455</em>.</p>
+  </section>
+
+  <section id="injects">
+    <h2><span class="num">06</span>Injects</h2>
+    <p class="lede">Each round opens when the instructor gives you the code word. Type it in.
+      They stay open after that, so you can look back.</p>
+    <div id="injectlist"></div>
+  </section>
+
+  <section id="ref">
+    <h2><span class="num">07</span>Reference</h2>
+
+    <h3>Eight Japanese words that carry the whole of Session 1</h3>
+    <div class="tblwrap"><table>
+      <tr><td class="k"><span class="ja">洪水</span></td><td>Flood</td><td class="k"><span class="ja">浸水深</span></td><td>Inundation depth</td></tr>
+      <tr><td class="k"><span class="ja">崖崩れ</span></td><td>Cliff collapse</td><td class="k"><span class="ja">土石流</span></td><td>Debris flow</td></tr>
+      <tr><td class="k"><span class="ja">指定緊急避難場所</span></td><td>Designated emergency evacuation site</td><td class="k"><span class="ja">指定避難所</span></td><td>Designated shelter (afterwards)</td></tr>
+      <tr><td class="k"><span class="ja">凡例</span></td><td>Legend</td><td class="k"><span class="ja">標高</span></td><td>Ground elevation</td></tr>
+    </table></div>
+    <p class="note"><span class="ja">指定緊急避難場所</span> is where you run to.
+      <span class="ja">指定避難所</span> is where you sleep afterwards. Two different lists, and the
+      difference cost lives in 2020.</p>
+
+    <h3>Japan's five evacuation levels</h3>
+    <div class="tblwrap"><table>
+      <tr><td class="k">L3</td><td><span class="ja">高齢者等避難</span></td><td>Older people and anyone who needs help leave now.</td></tr>
+      <tr><td class="k">L4</td><td><span class="ja">避難指示</span></td><td>Everyone in the danger area leaves now.</td></tr>
+      <tr><td class="k">L5</td><td><span class="ja">緊急安全確保</span></td><td>Too late to move safely. Protect your life where you are.</td></tr>
+    </table></div>
+    <p class="callout">Level 5 is not a stronger Level 4. It is an admission that Level 4 came too late.</p>
+
+    <h3>Map layers</h3>
+    <div class="tblwrap"><table>
+      <tr><td class="k">rivers</td><td>The Kuma and its tributaries — the main actor in this disaster.</td></tr>
+      <tr><td class="k">roads_main</td><td>National Route 219 and prefectural roads — the routes that are cut.</td></tr>
+      <tr><td class="k">bridges</td><td>Several Kuma River bridges were lost in 2020. Check before you plan a route.</td></tr>
+      <tr><td class="k">places</td><td>Settlement names. Use these when you name a district.</td></tr>
+      <tr><td class="k">care_homes</td><td>Welfare facilities, including Senjuen. Your most important layer.</td></tr>
+      <tr><td class="k">schools</td><td>Shelter candidates.</td></tr>
+      <tr><td class="k">health</td><td>Hospitals and clinics — where casualties go.</td></tr>
+      <tr><td class="k">emergency_services</td><td>Fire stations and police — where your crews start from.</td></tr>
+      <tr><td class="k">G1 / G2 drawings</td><td>Empty layers. This is where you draw. One per table.</td></tr>
+    </table></div>
+
+    <h3>When something goes wrong</h3>
+    <div class="tblwrap"><table>
+      <tr><td class="k">No Edit button</td><td>You opened the view-only link. Use the map link at the top of this page.</td></tr>
+      <tr><td class="k">My shape vanished</td><td>It is probably on another layer that is switched off. Turn all layers on and look again.</td></tr>
+      <tr><td class="k">Wrong layer</td><td>Click the feature, open its properties, change the Layer field, save. Nothing is lost.</td></tr>
+      <tr><td class="k">Deleted by accident</td><td>Do not save. Reload without saving. If you already saved, tell the instructor — there is a backup.</td></tr>
+      <tr><td class="k">A Japanese layer will not draw</td><td>Zoom in. Several of these layers only appear below a certain zoom level.</td></tr>
+      <tr><td class="k">Nothing loads at all</td><td>Say so immediately. Nothing in this exercise depends on the software.</td></tr>
+    </table></div>
+  </section>
+
+  <footer>
+    Base map © OpenStreetMap contributors (ODbL). Hazard, inundation and elevation data: Geospatial
+    Information Authority of Japan and the Ministry of Land, Infrastructure, Transport and Tourism.
+    Satellite imagery: Copernicus Sentinel data, via Esri Living Atlas. Prepared by the National
+    Science and Technology Center for Disaster Reduction, Taiwan.
+  </footer>
+</div>
+
+<script>
+const LINKS = [{"name": "1 · Hazard Map Portal（重ねるハザードマップ）", "url": "disaportal.gsi.go.jp/hazardmap/maps/index.html?layerset=kouzui", "when": "Session 1 — what the flood was assumed to do, and which sites are valid for which hazard"}, {"name": "2 · GSI Maps comparison（地理院地図）", "url": "TO_BE_FILLED_gsi", "when": "Session 1 — the assumed flood and the flood that happened, side by side"}, {"name": "3 · Sentinel-2 Explorer", "url": "livingatlas.arcgis.com/sentinel2explorer", "when": "Between the two sessions — optical imagery, back through the archive"}, {"name": "4 · Sentinel-1 Explorer", "url": "livingatlas.arcgis.com/sentinel1explorer", "when": "Between the two sessions — radar. Day, night, through cloud"}, {"name": "5 · Your uMap map", "url": "TO_BE_FILLED_umap", "when": "Session 2 — where your table draws every decision it makes"}];
+const ROLES = [{"g": "G1", "ja": "災害対策本部", "name": "Disaster Management HQ"}, {"g": "G2", "ja": "避難情報", "name": "Evacuation Information"}, {"g": "G2", "ja": "避難所・要配慮者", "name": "Shelters & Vulnerable Persons"}, {"g": "G1", "ja": "消防・救助", "name": "Fire & Rescue"}];
+const SEALED = [{"n": 1, "title": "Inject 1", "clock": "3 July 2020, 23:00 JST", "timing": "Warm-up · 10 minutes · one hand-off each · no report", "blob": "NmswJz0rLXZ3aWYHJy0tNzlpdWxlZ2o3ISYnJWt9aHZ+aQ47JT5oZn17dGJpdXtufXlkBBoTanhtazAnJC4mM29zZGweJjo5YDw0bovwaGV9aSknJzI8MT5phvlpKCYxbSElIC1qJzIraSEvKi9olvppKiFpNS0kIjswbGVnaickPTEvPS4nOm9zZBVrDy01OzBkHCguJnQsJyBuDysnOylpEy87KSE6KjpkLzsiaD0jaSIhOyQtdCsmNm49Ly10BjwpL2kVISIoO2QsKDQhOmNraG5rEyAxbTstOCw1aD0+aTYnOi4mM20rMTppNDw9ISVkLCwrJyNtPSwraSMtJyQuKm4hLi88YD4lOiw1aDgoPyEiaSgudHlndHlpKmg1OWkMJz0oMTs+IS1ga2todgQ9ZCc6Zyw1PyJqbhsmITptIDduLTUnIyMgKilpKD0gbT0sK2koPSApJis8aSsnISk6NCsoLC0mPmdmYmllCxsbAABjeH5oMCQ6MC8nJCE6KmksLzpnKyE5aTcmLCs8MT9pJy85Jis9OTBqbGVnag0iPDZuLy46MW0rNicuJiwxbSg2K2kxJzg4JzArLDU7dDohK24lLj4xbSAqbj0vLXQpIDc6Oy4rID5pPSE8Zz87OCUgbjoiJjBtPSwrJGchOjkmamwUa2h2OCcvICYwJnZ3aR9sASg/dCA8JyZpKicmKGk2LyApaD0+aSchJC4mM2NraG5rECAxOSEhPGkzIDFtOy04LDVoIyQlKG4qNS0nOWkmKy8oOjFtJjZuKCE8MT9pIC8+KWZ0HjwqPCA0LXQkOmQvPWd4YXd4cWBrGmR0bycrOixlcnRvHSwnOmc6OzgnIG4gNGg1bTshJiwmOicsJWpuCCk7Iyg7ZDcmMjp0PDwhPT0uJzptICpuJiktdD4sKjosKSsxYWk0Oz1nJzooaTAmICkvdCInZDohImg5LDlobigpLHQlKCoqaS48dDkmZDohImg6KDEwbjsoJDFjaRMraSMndCMmMG49JiMxbS8xIiVnOjE9JjY6Omeq1NlpMCYsZzg7JCcwbiA0aCAiaTY7J2c8PChpJyYoLiZ0IicnK2dlZHRvOysiLDRqbm0SP2wuZXJ0bw51bGVnajosJCFsc2dqECQ6JT09Ijp0ACgqLy4iJTEjPWQGGGVkdG89JT0iZXJ0bw0rbjAoPXQiOSEgaTMgMW0vMSIlZww9Pig3Oiw1aBksJyUpLCotOjlpDB9pMyc6JC4sOmVnJyZtOjAvMGcnOm06MC8nIyotcmkMIT5nJTUjMGQ9PSYuMm0tK24wKD10LigoImkuJnQsPWR8en14ZGFpKzs9ZycybShkPSQmJDhtJDEgICQhJCwlZDkmNSMyIjsnK2kwIDttPi0iJWcqMW0nISstIix0LC4lJydnPDsgJjY8JjB3dB49JTosZzE7ODtkPiY0PCE/LGQnJ2cnOihpNysnMy06LixqbGVnajwsJyBsc2dqHCwnIG49KGgROygnOygzITsjaQ0gLyg6OSw9LSEnZ2A7OSEhPGkzKTYhLG1gazpkdDZrI2xzZ2oTf2tobmspKTkoa35uawI+NS48JTogKCZ0BCciITsqKSAkJipsZWdqICw6L2xzZ2oBPiAqKWkzIDFtLyghJiNoPCwzJTwtZyQ1NCw2YmkpKTkoaTAmLGcsPT49NicqMzt0OSElOmk1LTcoIDIraQstIiglZH1pb6H/1aD57KHHzbPgwK3P9q7T92RpMCEnLi88OWdkCjsmP3Q5ISEjaSY7dCwnZC87Iil6bRowLz0iaCAlLGQ6ICotdDQmMW4gNDshKGktOmdlZHRvISUgLWVydG8BJSAtZzw7bRosKyUzLSY+aWw9KCotdDkoJiIsbmZ2MGVkNWsgam5tawN8a2todiMoKStrfWh2HiEhIj0iOidtb2QYPCsmMT8oJiIsZxgxPzorIDplZHRvPSU9ImVydG8eLCcqL2gnJSwoOiw1O3QpJmQ3JjJoOz0sKm49KCY9KiEwYmkwISAlaScvOSYrPTkwZDwsIz03KC17bgQmOj9tPSwrJGloACUsKm4lLjsgbT0sK2kwLTgrKDYraSEpNyQlLTogIjt0JCc3Jy0iaCAlLGQCLDEtOG16ZCogNDwmJCowPWVnOzU0aTMmICQgdCInIW4wKD10OSwoKzkvJzooaSInOzQ8eG0oKippMDo9OSxkOiEiaCckJyMiLGc5ISg6MCcmKWgtIjxkLzosaCAlLClga2todiUoKiprfWh2BSgqKmkzJ3QLIDYraWFoBig6JzssZ2A7OSEhPGkzKTYhLG1uKCkxdCsoJyclLjwtbTArO2klLTgkLDIraSQpOiMmMG4kKD4xbSAwPSwrLnpvNGhuMmUvdndpZgl4ZWR0byclIyxlcnRvDy08LGdudB8sNy08Imp4bWswLzosam5taxMmLDUtdCkmZDcmMmgkPyxpPiY0ISAkJipuPSgmPSohMGJpJiYwbT4sKzsiaDAiaT0hPGc6MSs8NytpMyd0PiwqKmkmJi0iJyFxaQopJiZpJiE9L2Z0Hig9bj4vKSBtMCs7aTAhOCFpICFpJio7OD1kLDsuLzUpLGQjLCoqMT86ZDkhKDsxbSYzIGkvJzkoOmQvOyJoPSNpMCYsZy44IiYgbig1LTVja2huay8pOilrfm5rFS0kIjswbj0oaBwcaWw9KCotdDkoJiIsbmgjJSgwbjAoPXQuKCogJjNoNyI/ITxnZTUJYWlmIyg3am5tEmYKOyY/dCInZDcmMjp0OSgmIixgO3QhKD0rO31oE3xpIDwoMCE6KjpkITtnD2ZtLTYvPi4mMz5nZAomZyY7OWkgPCgwaDsjaTAmLGcnICUsNm49Jio4KG43biUmMTE/Z2ZiaWUbICw7MG4sMS0mNGkoLysiJHQ6IDAmaT4nIT9pNiElInJ0BRhpYmkCHhUOZGhuGg8NGGBlZAgAFQ15Y2kPKyw3aDgsKyEiOmc7PCI7MGBra2h2DiYoITw1O3QsOyFuMCg9Jj5pMCFpJCA7IjohYGkGLyYoLGQ6ISIldDogMCYgKWgtIjw2bj0mKjgoaSYrLyg6MW0wKztpNDw1Pz1qbBQ6"}, {"n": 2, "title": "Inject 2", "clock": "4 July 2020, 04:50 JST", "timing": "18 min discuss · 8 min map · 4 min cross-table · 7 min report", "blob": "KHc6Oz0/IHFvbnAAPS82Njpye3Fpc3ctPiYwLnFvbnB9cw8mOTdye2N3Y3luYn1pcGN1BAEdcWlzdzo7JDorNHd0cmtifXM4JzxpNywgNjshOnOH5HV2ciQ6K3M4LyJpkfJzYW4/ID1lMCchITp+MTI3IjdpkfJzYm4/ID1lITA+PTsnZ391bCEgJzAyISc9J3F/cw5sYn1pcGN7bgYhNmUZND4zJ3MINiErPTs8KTwyJzEoP2USMis8KiplOzQ9ciMmNid1JyE6JiA3dS9yATYkJSxuACg6K3MQIzc7NCA9NjdyHjI3PTwgNWl7oPfyp8nhtMzqsMb3of7jtvX/e2k1KiF1BSckMig8ISFyGSEgNTAtJjwhIH11GjogIGU6Jm4eLCUgP3V7ciA9IzwnIzM9Oio9e2x+aXEXMjwgNCg/KXM6ODc7czE7MG4nOSMgIXUGOz08PDwmJjtpMCQnNiY/LD0xcz0vIWkhIDI2JjctcyQxOjsmaWB3YXUjP2k6K3NkfHIhPDAhJm6wycdlJz0rciUyNzQwPSZpNjM2J24gLDAqITErNmknLTYnK3xpASQ6O246LDIzOjA8cj07JD11fWJpPih8PW46KCBlMDogJiA9MDYxbjQmIWUyNyEnPXN9cz0hJzsga3F5bnAdOyBzJyckLCFlOiZuIT06KT91PDs6Ois0e24bPXMtMiZuPCYnZTAnKyE9NiF9d2JyawAwPScnISxzLCB1LyZpY3BpZHt8aRUqIXU6OixzKzYtOnJ7ZmU+PCAnPTY2czw6ciAgZSAhJz4lcyEyJyV8a39lcRkhJWQ/PDo7KXI7PCQ3Jm4zOzZlICEvID06KzR1Oj1pNSk8Oip8aQAqPjBuJSA/KXM2Ij06NmUkPDo6ID1lJz0rciE8MCF7bgsmJmU3Om48JidlODshJWkkLTo2Jnxrf2VxBis8IyYgPXVmt8TQoPzqq87bemlzNG4hOTYmOjQicicmNyA8IDVpOyo+MG47J3MSMiEvICBzITomOiAgMDF/dQUnJDJlBTwiPig0IH91JjM6c3JmdT43JiMpNnUnPDo6ITZ1rNLdczc2Jic2LD0xIHUvPC1zNic0KDRncwgyOzdyKjIrPTo6cj4yKTh1OzwoOiE2MWByHTsgczc7OyU3LD0ybjooIGUnIiFyOicqITA3IWdxGH91bDEmPSM/PC0mFicsJzkrcHNzZwc9K3IqPCs1OScxPXOn08FuICwyIXMhJjs6cyQ/Ojs2aTIxcywhJztzMTI3Ijdrf2VxNiE8Lz8sMCFsaGlxHDwgbjooJSBzNG40ICsgN3UgJyQxICF1ITRpJSA7PC0+LCBlMjsqci0hLCUwPCFncwg8Iyc8LnM1Njo+PixzKiYhbj0vczE7MG40JTwqN3U+Pig6K3M4KzMnIGU3JyckID0icxobBmdzDTY5PjsnNGUAMCA4PDYrczgrMycgZTcnJyQgPSJzHAB+aScqJDQ8NjpzMTswbiAgJSAheW47J3MxOzBuNighLn11Fz08cyYyOyA9PXMhPHUsPT07ZTIhbjQ8PylzJjogLD0iJz1gcg02JjoxK3Kr09FzNCA2aSQ3OiErci08Mj11OTooJ2UqOjtyKCEgczInJCA9InMgPnxrf2VxJyE+LCBnaXUVKWs0Z2l1bBV4cWlzdyAzJDZnaXVsFiAgJCAhKyBpHiQ9NCk3JDYrJ3UGA2t/ZXEhLyEicX9zdxwzJzhlJz0rISxzMTsnKzdlcyQ9MW4hKCplJD03aGl7JHp1KTcnNjcyOW43PzImJjQ6OyY9ZTwzbiYhNmUwPDorZXNtMXxuITwjNTwnOnI9PGUkMCI0KCEgczMvMSA/LCc8KyFlc20wfG4mITZlIDQoNz0qZTwzbismJjdzOjk8aSUqPyAgJiw2N3MzJyAscychPCkzLTZrcwwhJ2k+JCp1ID09czcyOyVyPTsgPnUrIzwyKX13YnJrOyQ9MWxoaXENMjsqcjA8MCF1PDMnOCw9Mm4mJnMAJTQtJygnLDw7bhsnNSohOC8mIDwrc30hJiE2N3MhLzAlNmx9dzN+aShnNHd0cmsUd3F5bnAnMig2d3RyaxYzMjY7Mz06Kj11BzwvPDc+NDo7Jj1nf3VsJiggLnFvbnAPPDdzMC8xIXMhOiY6ICAwMXM2Jj0mICBzGSskLD9lZ3Vmu8jsrMj2qN7OtOHpfG49O3MJNiMrPmlmZXuy+div0+C2+8e3zPui8e+q7dR6aXM0IDZpNCwlMG4mITZlJzwjN2dzFzY4Kz8rNjdzIiYzPXMJNiMrPmlmZSA0NyFzcywndSchaScqPHUiMz02ZSc6bj8mJSB9dQchOiYgczw6cj08KnMwLyAlKmUyOypyMDwwcyE8MzlzNTY6Pj4sczI7Om4xJiYpN3UmMz82ZSQ0IjksN2U8IDp8aRo2ICArciAnZSc6IXIlMjE2dS88LXM8PCBuPiYgIHMhJjdpIyA8JSI3aSQtPHU9JigqIDd7bhY7MjJzISY3aScyPHU0PSc2NnM8IHItOiM1MDw3JydlMDoiPTwhNn13YnJrOyQ9MWxoaXENMjsqcj07IHMhOT1pKSo9MD1yPTxlAD0rPj02NyB1ZiEoPiBzIS8wJTZsfXczfmkoZzR3dHJrFHdxeW5wJzIoNnd0cmsALTY5Ojc7IGV1dRgnJT0gITQsPixzFTYnPT0nIGd/dWwmKCAucW9ucBo2KzkgKzxpJyA/OT1yMDwwczw6cj46KT91Iz0/NmUhMD07LTYrJyZuJiZzMTswbiEsMCo9MW40JTwqIXtuFiZzPDwgbjMqMCAjIW4kLCExOjYvPmk2MzI2OzM9Oio9eW49O3MhPHU3PTxzKiExKyBpJy02OG4mJnMpNjQ4N2knLTZ1LCcgPyE6OyltaRUsISY6cj4hLCcwbiYhNmUnPTw3LHMxOzwgNTpzPDwgbiUmJik3dSA3LDdlJzpuOSc8Mn11GjosPWUyOz0lLCFlMjs3JSgqZbHV2nIwPDBzPS8kLHMxJDpuPyA9MCcwPX5pPSondTolJnMtPCA8IWdxaXN3JjMnN2dpdWwGLD8pcxMnICxzY3MHKyEqJiBzfSEmITY3cyEvMCU2bHMiJjM9cy02OT5yGjYrOSArPGk9IDYxPXxrLmlzLmw1a2llcRJ/cGVzZz00IzdraWVxEycgLHNjcwcrISomIHF5bnA9MjY4d3Ryaxc3MiJuJiE2ZSE6OyYsczw8IG4lJiYpN3U6MyI2ZTUnIT9pJy02dSg7OzZlICEvJiA8K3MhIXIaNis5ICs8Z3MROzAgciQyNzh1OjosczY6Oyk+LHM1PDwgJmkkLTYnK3IwPDBzISY7JzhlJz0vJmkhKiYhK3IvMiw/JmJyKD0hcyYvK2kkLTIhbjc/OiE2Oy03aSoqJnU7ISw3ZbHV2nI9OyBzPS8oKCEhczkvKywhaXMhJjdpMTc6MSk3OnMpMiwrIGVzMTswbiAgJSAheW4mITZlJzA8ICg6K311GjosPWUyOz0lLCF/czEhcjA8MHMmKzwtczE7MG4kJj8wPSErNztzJyE8KTMtNmU6Ozo9aQQkJzQ8O2k9KiR5bj07cy08OSpyPTsgPmpsfmlxLTI7KnBzc2cBMD49OydlJzpuGhhzbSA0IzdpJyQxOSt7aSQtMiFuKyYmZTA0IDwmJ2UwOjg3O31nLghicmswNzwmPXBzc2ccOytyOTY3IDogci8hKj51KzMqO2UnNCw+LHMpNjQ4NzpzMTswJyBpICAyIW4zJzdlMDogNCAhKCB5bjQoMCBzISFyLzImNnluJiEyMXMmIT8sMSo3LG46KCBlMjYtNzknIDd1Ojosczc2JDs3OidlKjo7ciQyITZ7bhsvcys8NyE2MHMtMiZicj07JCd1JyFpKiomJ24zJyAyNidicig9IXMsISdpICQqdT09aTorcywhJztzNzYlISA9fWcu"}, {"n": 3, "title": "Inject 3", "clock": "4 July 2020, 07:00 JST", "timing": "20 min discuss · 8 min map · 4 min cross-table · 8 min report", "blob": "NW0wKCAtK21+YXYIICUhIiBhfW1oYXYiIiAnKnZ7bm1wYR40IjZkc2RzfmNkcWN7fn9kCwcVbGNkYyAoIyYqJnZ7bm12cXQsJyFkJT0yLTo3MnSD+W98YTkoIG8pICRhjPhkdXQsJyFkIiYuPTxpNTUjIipkg+Nhdm8pKDphPCo0LiY1bGNkYycoOjolNT0uIG1+YQ9jDy0rNCBhfnh+cWRvbhglNTEzbiclMnQjKygxL3QkIDshMz0vKW8wKTFhHSoqKyEkIG8mND0tKiYqJnpjYm9mcWN7fX9kMzEgKiYqJidhrM/QYRwoOiA9LicpJ28jICEmK29xb2R2biJoYTUmLyYqMiBhL28gJCcoKSFkKT0mJmIzICAkPG8oJCIkIm8rJ3R1YH9zYTlvbhglNTUzJ28jICEmK291c3p5dm8pbXQgKS4tLyc1bi5kJTEyJygqYTwoKSdpNjU1Kz1kLTE3KyNkLjJhf35qcmdhI2FmbXRjDykwJCZhfnh+cmRhOichYQMgOi42KHQmLzojJHQyOiA0MnQzKz8rMyAoIChqYR01bisrJCdhICAwYTcuIypkIzUiJWFmbXRjfnh+dGRvbgkoLjslbgAnIiEzPCoqIjFhByEiLiYsLzstLjphJzxkKCcyOyogb3Ztbm10eW5yfmFkFTwkbgctNTs4ITwsKHQmLzojJHQzKy4gMnR3YH52YTlhrM/QYTUvKm8wKTEvbiYwYSc1IT83YSYkPiA2NT0vKW8wLjtvbGNkYwYuLys3YT0vOiBkFjU1Lz0tYTUzK28nNCBvbhYrNHQlIW8qLiBhJSErNnQ2JiYnKXQjPCYgJjEybi42JHQyOiYoLXQyOi4qJT0vKWFmHHhhbCwrLzItJywwHiAoOiMhY25hbBYrNHQpLzkhYTguPTtkODs0PG8tLyc1PDopJDo1PW+mwcBhPColJXQ1JiY3YTUtITogY3hhbCwrLzItJywwY25hbA0rNTxhKS4xJjEybiklKDgkKm8lNXQ1JipkMTEgJWNkICBhOichYTkuIyoqNXQ1JipkLyEsLCo2MnQsLzswJCYkKm8pLic1YG8CMzssbichMzFhISFkODs0bisrYTouOm8vLzs2bjssJHQzJzkhM3QtKzkhLXphCzkhMy01JiYqJnQ4ITpkJTEiJyshYTIuPG8wKTFhPCo3NXQuKG8wKT0ybio8JCYiJzwhbXQ4ITpkJTEiJyshYTYtJyEgb3Ztbm02LjgkPW1+YQ86bChme3RjCX5mbXRjIC4pJHZ7bm0AKCcgPTshM3QMLyElJjEsKyEwYRwQbGNkYyAgPSRme3RjGSYwKXQvIW8jICEmK28gICAgYm8zKTU1bisrYS0uO28xMjFhJyE3NTEgKnBkDzUsK28wKSYkK283LiEzLSo3YS0uO28nLiEtKm8lIiA0LyMoOHQuLDslKDphJyFkNTwkbiEhOSBhfX9kLD0vOzshMnphGichL3Q2PCYwJHQ1JipkMzEwOyo3NXQ4ITpkMjEvKm8wLnQKOyIlLDs1IW8UMzEnKywwNCYkdG83IC1hKzclIiAtN28zKTU1bjYrNHQ2LyEwbXQpIThkLCEiJm8rJ3QoOmNkIDolbjgsJCYkbjsrYSckICtkKCBvbg5kMzEwOyo3NXQ1Ji4wYScgNzxkHXYyKyEgYTwkIj8YY3Q2JyMoYTYkbj0hJyEyKytqY3hhbCclLzBjdG9mCTUvKm8wLnQEOC4nNDU1JyAqYR0vKCA2LDU1JyAqYSMpLztkODs0biErNnQjKyMtJCIkbi4mLiE1bjssJHQzJzkhM3pjM2NkOnYmbHVkYxNzbGNkYzogIypme3RjCzklIiEgOiYrL3QIICkrMzkgOiYrL3Ztbm0wICcqbHVkYx0yPTohYRgkOCooYWFhKCA2YSApK28lMzEgPW89LiFhJDogJjFhOiBkIzFhKCMrLjAoIChkIDgzKy4gOHhhLyEgYTAzLzhkNTwkI2FkFTwkIG8wKTFhJi42JTEzbj4xJCc1JyAqe3QpIThkJTthNyAxYTAkIiYyJCZhOichYTkkPTwlJjF+bhssJHQuOzsgLjszbjw0JDUqKz03YTUzK28sICYlbjsrYTwkLz1kKDphOictMnQzLyYqbXQxITghM3QsLzZkIzFhITowbXQgICtkKCBhJzxkJDUzIjZkLjphL28XICA0PCslOHphAiY3NXQ4ITo2YTAkIiYyJCY4biIhNTwuKjxkKDphOichYTszKio2YS0uO28zKDgtbjo3JHQ1Jiopb3Ztbm0sIDolbHVkYwAkIiNkEjwkIjshMydhOSctIjxhLz0hICdhNyAxYTwgOCpkNiYoOjshL3QuKClkJzszbiIrNzEsKyEwb3Y8Ym8/YzNjdG9mBmZjYm9mLzUsK21+YXYSJiooNTEzPW9iYQI0IiEhMzUjIipkETEzPSAqMnZtbm0wICcqbHVkYxUjITowYWV2bj8hLiQtK28lNXQSKyEuNDEvbiwlLzouOm8mJHQiLz02KDElbjo0MiAgJz03YT0vbjstLDFvbhwwICAkbjgsICBhNyAxYTUyJW8iLiZtbik2LjlhOScrLHhhLyEgYTY4bjgsJDpvbhssJDphIy42KnQkOCo2OHQuOichM3Q2KyMiICYkbiklIj0tJzs9YT0vbjssJHQnIiArJXQgPColYTUvKm83IC1tbikrM3QkLywsbXQ2JiowKTEzbjYrNHQpLzkhYTwkLz0gYTIzISJkNTwkI2FmbXRjJi4qJXZ7bm0DKCIkbgktMzFhaG8WJCciOypkODs0PG80Mz0uPCYwOHQuPCshM3pjM2NkOnYmbHVkYxNwbGNkYzogIypme3RjCCY2JHRnbh0hMjc0K21oYXY1LzwvY25hbBYrNHQiLyEqLiBhPColIjxhGS4wICYobi09YSYuLytqYQc1LzshYS0uOz1kIDg1Kz0qICAoOCpko9TVbi09YSYoOCo2bXQjN28lKCZtbiAqYTIuITtkJyYuI28lLzs1Jio2YTAoPConNT0uIGNkLiZhICAwYTU1bi4oLXSjzttkIDolbjwwICAkbjssJHQzJzwvYT01bj8xNSdhISFkODs0PG8rNjphPiorMTgkYG8AMzU2bjssJHQgPj82LjUiJm89LiFhLScrLickYG1oYXYpLyEgY25hbB0hMTszOm8wLnQJH2FmPAltbm0pICRjdG8fYxkgPCRkIzs1Jm8iID0tKytkJjU0KSo3YSMoOidkIHQxISYqNXQtLy0hLTgkKm8MEHkPAQsFFRVvbGNkYxAzLzhkIHQxISM9JjsvbiAyJCZhOichYTUzKy5kODs0biErYTguICghM3QpLzkhYT0vKCA2LDU1JyAqYTUjITowb3QNLy0hLXQoOm8MEHkUAAQKDgMPYG1oYXYVJi4wYSQuIjYjLjphJzxkNTwkbiIrMiBhJiAqJCc1bjssKDombi4qODsvK28zKDgtbis2ICNhOiAgIC1vbgsrYTouOm8pID8kbiYwYScsLyMoJCZhOiclL3QoOm8tMnpjEzI="}];
+
+function store(k, v){ try { if (v === undefined) return localStorage.getItem(k);
+  localStorage.setItem(k, v); } catch (e) { return null; } }
+
+// ── the five links ───────────────────────────────────────
+const sl = document.getElementById("sitelinks");
+LINKS.forEach(l => {
+  const ready = l.url && l.url.indexOf("TO_BE_FILLED") === -1;
+  const el = document.createElement(ready ? "a" : "div");
+  el.className = "site" + (ready ? "" : " pending");
+  if (ready){ el.href = l.url.indexOf("http") === 0 ? l.url : "https://" + l.url;
+    el.target = "_blank"; el.rel = "noopener"; }
+  const nm = document.createElement("span"); nm.className = "nm"; nm.textContent = l.name;
+  const u = document.createElement("span"); u.className = "u";
+  u.textContent = ready ? l.url : "your instructor will give you this link";
+  const wh = document.createElement("span"); wh.className = "wh"; wh.textContent = l.when;
+  el.append(nm, u, wh);
+  sl.appendChild(el);
+});
+
+// ── role picker ──────────────────────────────────────────
+let myRole = store("kuma-role") || "";
+const rp = document.getElementById("rolepick");
+ROLES.forEach(r => {
+  const b = document.createElement("button");
+  b.type = "button"; b.className = "role"; b.dataset.role = r.name;
+  b.setAttribute("aria-pressed", myRole === r.name ? "true" : "false");
+  const g = document.createElement("span"); g.className = "g"; g.textContent = r.g + " · " + r.ja;
+  const n = document.createElement("span"); n.className = "n"; n.textContent = r.name;
+  b.append(g, n);
+  b.addEventListener("click", () => {
+    myRole = (myRole === r.name) ? "" : r.name;
+    store("kuma-role", myRole);
+    rp.querySelectorAll("button.role").forEach(x =>
+      x.setAttribute("aria-pressed", x.dataset.role === myRole ? "true" : "false"));
+    document.querySelectorAll(".rolecard").forEach(c =>
+      markRole(c, c.dataset.role === myRole));
+  });
+  rp.appendChild(b);
+});
+function markRole(card, mine){
+  card.classList.toggle("mine", mine);
+  const tag = card.querySelector(".you");
+  if (tag) tag.hidden = !mine;
+}
+
+// ── injects, sealed with the code word ───────────────────
+function unseal(b64, code){
+  const bin = atob(b64);
+  const key = new TextEncoder().encode(code.trim().toUpperCase());
+  if (!key.length) return null;
+  const out = new Uint8Array(bin.length);
+  for (let i = 0; i < bin.length; i++) out[i] = bin.charCodeAt(i) ^ key[i % key.length];
+  try { return JSON.parse(new TextDecoder("utf-8", {fatal: true}).decode(out)); }
+  catch (e) { return null; }
+}
+
+const list = document.getElementById("injectlist");
+SEALED.forEach((s, idx) => {
+  const box = document.createElement("div");
+  box.className = "inject";
+  const hd = document.createElement("div");
+  hd.className = "hd";
+  const t = document.createElement("span"); t.className = "ttl"; t.textContent = s.title;
+  const c = document.createElement("span"); c.className = "clk"; c.textContent = s.clock;
+  hd.append(t, c);
+  const tm = document.createElement("span"); tm.className = "tm"; tm.textContent = s.timing;
+  const body = document.createElement("div"); body.className = "body"; body.hidden = true;
+  const form = document.createElement("div"); form.className = "lock";
+  const inp = document.createElement("input");
+  inp.type = "text"; inp.id = "code" + s.n; inp.placeholder = "code word";
+  inp.autocapitalize = "characters"; inp.autocomplete = "off"; inp.spellcheck = false;
+  inp.setAttribute("aria-label", s.title + " code word");
+  const btn = document.createElement("button"); btn.type = "button"; btn.textContent = "Open";
+  const msg = document.createElement("div"); msg.className = "lockmsg";
+  msg.textContent = "The instructor gives you this when the round starts.";
+  form.append(inp, btn);
+  box.append(hd, tm, form, msg, body);
+  list.appendChild(box);
+
+  function open(data){
+    body.innerHTML = "";
+    const add = (tag, cls, txt) => {
+      const e = document.createElement(tag); if (cls) e.className = cls;
+      if (txt) e.textContent = txt; body.appendChild(e); return e; };
+    add("h3", null, "Situation");
+    const ul = add("ul");
+    data.situation.forEach(x => { const li = document.createElement("li"); li.textContent = x; ul.appendChild(li); });
+    if (data.conflict){
+      add("h3", null, data.conflict_title);
+      add("p", "callout", data.conflict);
+    }
+    if (data.unknown){
+      add("h3", null, "What you do not know");
+      const u2 = add("ul");
+      data.unknown.forEach(x => { const li = document.createElement("li"); li.textContent = x; u2.appendChild(li); });
+    }
+    if (data.note) add("p", "note", data.note);
+    add("h3", null, "Your task");
+    data.roles.forEach(r => {
+      const card = document.createElement("div");
+      card.className = "rolecard"; card.dataset.role = r.name;
+      const rh = document.createElement("div"); rh.className = "rh";
+      const tag = document.createElement("span"); tag.className = "tag"; tag.textContent = r.g;
+      const nm = document.createElement("span"); nm.textContent = r.name;
+      const you = document.createElement("span"); you.className = "you"; you.textContent = "YOU";
+      you.hidden = true;
+      rh.append(tag, nm, you);
+      const p = document.createElement("p"); p.textContent = r.task;
+      const h = document.createElement("p"); h.className = "hand"; h.textContent = "→ " + r.hand;
+      card.append(rh, p, h);
+      markRole(card, r.name === myRole);
+      body.appendChild(card);
+    });
+    if (data.cross){
+      add("h3", null, "Cross-table check");
+      add("p", "note", data.cross);
+    }
+    if (data.map){
+      add("h3", null, "On the map");
+      const u3 = add("ul");
+      data.map.forEach(x => { const li = document.createElement("li"); li.textContent = x; u3.appendChild(li); });
+    }
+    body.hidden = false;
+    form.hidden = true;
+    msg.hidden = true;
+  }
+
+  const saved = store("kuma-code-" + s.n);
+  if (saved){ const d = unseal(s.blob, saved); if (d) open(d); }
+
+  function attempt(){
+    const d = unseal(s.blob, inp.value);
+    if (d){ store("kuma-code-" + s.n, inp.value.trim().toUpperCase()); open(d); }
+    else { msg.textContent = "That code is not right. Ask the instructor."; msg.className = "lockmsg bad"; }
+  }
+  btn.addEventListener("click", attempt);
+  inp.addEventListener("keydown", ev => { if (ev.key === "Enter"){ ev.preventDefault(); attempt(); } });
+});
+</script>
+
+</body>
+</html>
