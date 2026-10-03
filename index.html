@@ -278,8 +278,14 @@ footer{border-top:1px solid var(--line); margin-top:30px; padding-top:14px;
       <li>Click <b class="ui">Edit</b> at the top right, or press <b class="ui">Ctrl + E</b>.</li>
       <li>Find your table's layer: <b class="ui">G1 drawings</b> or <b class="ui">G2 drawings</b>.</li>
     </ol>
-    <p class="callout">One person draws at a time. Everyone else discusses. Two people editing the
-      same map at once is allowed, but it is how features get lost.</p>
+    <p class="callout">One person draws at a time. Your table decides how to share the drawing and
+      you can swap as often as you like &mdash; but only one at a time. A layer is a single file: if
+      two of you save it at the same moment, one person's work is gone. Say "I'm drawing" before you
+      start, and "saved" when you are done.</p>
+    <p class="callout"><strong>Put your own name at the start of every feature you create</strong>
+      &mdash; <code>SUZUKI | Watari evacuated first</code>. Your table hands in one file at the end
+      of Session 2 (layer menu &rarr; Download &rarr; GeoJSON), and the names inside it are how I
+      can see who did what. Everyone at the table draws at least one feature.</p>
 
     <h3>The five things you will actually do</h3>
     <div class="tblwrap"><table>
@@ -287,7 +293,7 @@ footer{border-top:1px solid var(--line); margin-top:30px; padding-top:14px;
       <tr><td class="k">Draw an area</td><td><b class="ui">Draw a polygon</b> or <b class="ui">Ctrl + P</b> → click each corner → click the last corner twice to finish</td></tr>
       <tr><td class="k">Draw a line</td><td><b class="ui">Add a polyline</b> → click along the route → double-click to finish</td></tr>
       <tr><td class="k">Place a point</td><td><b class="ui">Add marker</b> → click the spot</td></tr>
-      <tr><td class="k">Fill it in</td><td>Every feature needs three things: <b class="ui">Layer</b> (check it says your table), <b class="ui">Name</b>, <b class="ui">Description</b></td></tr>
+      <tr><td class="k">Fill it in</td><td>Every feature needs three things: <b class="ui">Layer</b> (check it says your table), <b class="ui">Name</b> (start it with your own name), <b class="ui">Description</b></td></tr>
       <tr><td class="k">Save</td><td><b class="ui">Save</b>, top right — then say "saved" out loud, so the other table can reload and see it</td></tr>
     </table></div>
     <p class="callout">The mistake everyone makes: drawing on the wrong layer. uMap remembers
@@ -522,7 +528,6 @@ SEALED.forEach((s, idx) => {
 
 </body>
 </html>
-
 
 
 
