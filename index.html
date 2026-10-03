@@ -276,7 +276,7 @@ footer{border-top:1px solid var(--line); margin-top:30px; padding-top:14px;
     <ol class="steps">
       <li>Open the map link above in a normal browser. Chrome, Safari, Edge and Firefox all work.</li>
       <li>Click <b class="ui">Edit</b> at the top right, or press <b class="ui">Ctrl + E</b>.</li>
-      <li>Find your table's layer: <b class="ui">G1 drawings</b> or <b class="ui">G2 drawings</b>.</li>
+      <li>Find <b class="ui">your role's layer</b>. There are four, in chain order, each with its own colour: <b class="ui">1 HQ</b> (red) &middot; <b class="ui">2 Evacuation Info</b> (teal) &middot; <b class="ui">3 Shelters</b> (blue) &middot; <b class="ui">4 Fire &amp; Rescue</b> (amber). The same four colours are on the slide.</li>
     </ol>
     <p class="callout">One person draws at a time. Your table decides how to share the drawing and
       you can swap as often as you like &mdash; but only one at a time. A layer is a single file: if
@@ -293,9 +293,14 @@ footer{border-top:1px solid var(--line); margin-top:30px; padding-top:14px;
       <tr><td class="k">Draw an area</td><td><b class="ui">Draw a polygon</b> or <b class="ui">Ctrl + P</b> → click each corner → click the last corner twice to finish</td></tr>
       <tr><td class="k">Draw a line</td><td><b class="ui">Add a polyline</b> → click along the route → double-click to finish</td></tr>
       <tr><td class="k">Place a point</td><td><b class="ui">Add marker</b> → click the spot</td></tr>
-      <tr><td class="k">Fill it in</td><td>Every feature needs three things: <b class="ui">Layer</b> (check it says your table), <b class="ui">Name</b> (start it with your own name), <b class="ui">Description</b></td></tr>
+      <tr><td class="k">Fill it in</td><td>Every feature needs three things: <b class="ui">Layer</b> (check it says your role), <b class="ui">Name</b> (start it with your own name), <b class="ui">Description</b></td></tr>
       <tr><td class="k">Save</td><td><b class="ui">Save</b>, top right — then say "saved" out loud, so the other table can reload and see it</td></tr>
     </table></div>
+    <p class="callout"><strong>Colour is a convenience, not information.</strong> Teal and blue look
+      alike on a small marker, and so do red and amber for some people. What identifies a feature is
+      the name you typed and the layer it sits on. And do not use colour to mean urgency &mdash;
+      urgency goes in the 50-character description. A legend that lives in one person's head is not
+      a shared picture.</p>
     <p class="callout">The mistake everyone makes: drawing on the wrong layer. uMap remembers
       whichever layer you used last, and it is often not yours. Look at the Layer field every single
       time before you save.</p>
@@ -359,7 +364,8 @@ footer{border-top:1px solid var(--line); margin-top:30px; padding-top:14px;
       <tr><td class="k">schools</td><td>Shelter candidates.</td></tr>
       <tr><td class="k">health</td><td>Hospitals and clinics — where casualties go.</td></tr>
       <tr><td class="k">emergency_services</td><td>Fire stations and police — where your crews start from.</td></tr>
-      <tr><td class="k">G1 / G2 drawings</td><td>Empty layers. This is where you draw. One per table.</td></tr>
+      <tr><td class="k">Zones A&ndash;F</td><td>Grey. Six working areas so we can all say the same name. Read only &mdash; do not edit.</td></tr>
+      <tr><td class="k">1 HQ &middot; 2 Evacuation Info<br>3 Shelters &middot; 4 Fire &amp; Rescue</td><td>The four empty drawing layers, one per role, colour-coded. Draw on <b>yours</b> only.</td></tr>
     </table></div>
 
     <h3>When something goes wrong</h3>
@@ -528,6 +534,7 @@ SEALED.forEach((s, idx) => {
 
 </body>
 </html>
+
 
 
 
